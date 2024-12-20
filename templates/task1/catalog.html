@@ -1,0 +1,16 @@
+{% extends 'fourth_task/menu.html' %}
+{% block pagename2 %}<h1>Услуги</h1>{% endblock %}
+{% block menu2 %}{{ block.super }}{% endblock %}
+{% block content2 %}
+    <ul>
+        {% for i in catalog %}
+            <li>
+                {{ i }} | {{i.description}}. Стоимость: {{ i.cost }}
+                <button>Купить</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="laundry/">
+        <button>На главную</button>
+    </a>
+{% endblock %}
