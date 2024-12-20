@@ -1,5 +1,5 @@
 from django.contrib import admin
-from task1.models import Buyer, Game
+from .models import *
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):

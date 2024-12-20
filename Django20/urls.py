@@ -23,4 +23,5 @@ from task1.views import *
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', sing_in),
+    path('laundry/news/', news, name='news'),
 ]

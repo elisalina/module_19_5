@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+</head>
+<body>
+    <h1>Новости</h1>
+    <ul>
+        {% for new in news %}
+            <li>
+                <h2>{{ i.title }}</h2>
+                <p>{{ i.content }}</p>
+                <p><i>{{ i.date }}</i></p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div>
+        {% if news.has_previous %}
+            <a href="?page={{ news.previous_page_number }}">Предыдущая страница</a>
+        {% endif %}
+
+        <span>Страница {{ news.number }} из {{ news.paginator.num_pages }}</span>
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}">Следующая страница</a>
+        {% endif %}
+    </div>
+</body>
+</html>
