@@ -4,14 +4,14 @@ from django.http import HttpResponse
 
 
 
-def sing_in(requests):
+def sing_in(request):
     buyer = Buyer.objects.all()
     info = {}
-    if requests.method == "POST":
-        username = requests.POST.get("username")
-        password = requests.POST.get("password")
-        repeat_password = requests.POST.get("repeat_password")
-        age = requests.POST.get("age")
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        repeat_password = request.POST.get("repeat_password")
+        age = request.POST.get("age")
 
         if password == repeat_password and int(age) >= 18 and username not in buyer:
             Buyer.objects.create(name=username, balance=2000, age=age)
@@ -23,6 +23,6 @@ def sing_in(requests):
         elif username in buyer:
             info['error'] = 'Имя пользователя уже занято'
 
-    return render(requests, 'task1/registration_page.html', context=info)
+    return render(request, 'task1/registration_page.html', context=info)
 # Create your views here.
 
