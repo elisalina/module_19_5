@@ -13,14 +13,14 @@ def sing_in(request):
         repeat_password = request.POST.get("repeat_password")
         age = request.POST.get("age")
 
-        if password == repeat_password and int(age) >= 18 and username not in buyer:
+        if password == repeat_password and int(age) >= 18 and username not in str(buyer):
             Buyer.objects.create(name=username, balance=2000, age=age)
             return HttpResponse(f'Приветсвуем на нашем сайте {username}!')
         elif password != repeat_password:
             info['error'] = 'Пароли не совпадают'
         elif int(age) < 18:
             info['error'] = "Вы должны быть старше 18"
-        elif username in buyer:
+        elif username in str(buyer):
             info['error'] = 'Имя пользователя уже занято'
 
     return render(request, 'task1/registration_page.html', context=info)
