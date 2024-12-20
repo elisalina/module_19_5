@@ -23,6 +23,6 @@ def sing_in(requests):
         elif username in buyer:
             info['error'] = 'Имя пользователя уже занято'
 
-    return render('task1/registration_page.html', context=info)
+    return render(requests, 'task1/registration_page.html', context=info)
 # Create your views here.
 
