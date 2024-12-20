@@ -1,7 +1,7 @@
 from django.db import models
 
 class Buyer(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     balance = models.DecimalField(max_digits=9, decimal_places=2)
     age = models.PositiveSmallIntegerField()
 
@@ -9,7 +9,7 @@ class Buyer(models.Model):
         return self.name
 
 class Game(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=50)
     cost = models.DecimalField(max_digits=9, decimal_places=2)
     size = models.DecimalField(max_digits=9, decimal_places=2)
     description = models.TextField()
